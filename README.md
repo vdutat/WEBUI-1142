@@ -32,9 +32,14 @@ cd WEBUI-1142
 mvn clean install
 ```
 
+if you don't want to build the **Docker** image, use:
+```
+mvn clean install -DskipDocker
+```
+
 ## Installation
 
-### Option 1
+### Option 1 (using the Docker image)
 
 ```
 docker-compose up ; docker-compose down -v
