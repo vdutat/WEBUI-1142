@@ -56,7 +56,7 @@ chmod 750 ./init-repository.sh
 ./init-repository.sh
 ```
 
-### Preview a PDF file stored in a custom blob perty
+### Preview a PDF file stored in a custom blob property
 
 In a browser, navigate to [http://localhost:8080/nuxeo/ui/#!/browse/default-domain/UserWorkspaces/Administrator/WEBUI-1142-1](http://localhost:8080/nuxeo/ui/#!/browse/default-domain/UserWorkspaces/Administrator/WEBUI-1142-1)
 
