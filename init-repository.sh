@@ -4,10 +4,16 @@ BASE_URL=${BASE_URL:-http://localhost:8080/nuxeo}
 NUXEO_STATUS=$(curl -Isw "%{http_code}\n" -o /dev/null ${BASE_URL}/login.jsp)
 [[ "${NUXEO_STATUS}" != "200" ]] && { echo "! Connection to ${BASE_URL} failed (${NUXEO_STATUS})."; exit 2; }
 
+JQ_CMD="cat"
+if ! type "$cmd" > /dev/null 2>&1;
+then
+    JQ_CMD="jq"
+fi
+
 ## Make sure '/default-domain/UserWorkspaces/Administrator' exists
 curl -su Administrator:Administrator \
 -H 'Content-Type:application/json' -H 'enrichers-user:userprofile' -H 'properties: *' \
-${BASE_URL}/api/v1/me/ |jq
+${BASE_URL}/api/v1/me/ |${JQ_CMD}
 
 folders="/default-domain /default-domain/UserWorkspaces /default-domain/UserWorkspaces/Administrator"
 for folder in $folders
@@ -31,7 +37,8 @@ then
     ${BASE_URL}/api/v1/repo/default/path/default-domain/UserWorkspaces/Administrator \
     -D /tmp/response-headers.txt \
     -d '{ "entity-type":"document", "name":"WEBUI-1142-1","type":"WEBUI-1142", "properties": { "dc:title":"WEBUI-1142-1"} }' \
-    |jq
+    |${JQ_CMD}
+    echo "* Created"
 
 ## Attach file to blank.pdf
     echo "* Attaching file to document 'blank.pdf' ..."
@@ -50,7 +57,8 @@ ${BASE_URL}/api/v1/repo/default/path/default-domain/UserWorkspaces/Administrator
 -H 'fetch-directoryEntry: parent' -H 'fetch-task: actors' \
 -H 'enrichers-document: hasContent,firstAccessibleAncestor,permissions,breadcrumb,preview,favorites,subscribedNotifications,thumbnail,renditions,pendingTasks,runnableWorkflows,runningWorkflows,collections,audit,subtypes,tags,publications' \
 -H 'enrichers-blob: appLinks,preview' -H 'properties: *' \
-|jq
+|${JQ_CMD}
 
+echo
 echo "* Done."
 
