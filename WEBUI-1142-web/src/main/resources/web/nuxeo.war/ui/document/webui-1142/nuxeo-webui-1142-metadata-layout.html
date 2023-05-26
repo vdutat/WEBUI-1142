@@ -1,0 +1,48 @@
+<!--
+`nuxeo-webui-1142-metadata-layout`
+@group Nuxeo UI
+@element nuxeo-webui-1142-metadata-layout
+-->
+<!--
+<link rel="import" href="../../elements/cm-pdf-bundle-viewer.html">
+-->
+<dom-module id="nuxeo-webui-1142-metadata-layout">
+  <template>
+    <style include="nuxeo-styles"></style>
+    <div role="widget">
+      <label>Title</label>
+      <div name="title">[[document.properties.dc:title]]</div>
+    </div>
+
+    <div role="widget">
+      <label>Description</label>
+      <div name="description">[[document.properties.dc:description]]</div>
+    </div>
+
+<!--
+    <cm-pdf-bundle-viewer role="widget" document="[[document]]" label="PDF Bundle (main blob)" xpath="file:content">
+    </cm-pdf-bundle-viewer>
+    <cm-pdf-bundle-viewer role="widget" document="[[document]]" label="PDF Bundle" xpath="supnxp-44837_vehiclejacket:pdf_bundle">
+    </cm-pdf-bundle-viewer>
+-->
+
+  </template>
+
+  <script>
+  Polymer({
+    is: 'nuxeo-webui-1142-metadata-layout',
+    behaviors: [Nuxeo.LayoutBehavior],
+    properties: {
+
+      /**
+         * @doctype WEBUI-1142
+         */
+      document: {
+        type: Object,
+      },
+
+    }
+  });
+  </script>
+</dom-module>
+

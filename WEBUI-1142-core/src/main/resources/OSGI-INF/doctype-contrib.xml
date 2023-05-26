@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<component name="com.acme.core.doctype">
+  <require>org.nuxeo.runtime.started</require>
+
+  <extension target="org.nuxeo.ecm.core.schema.TypeService" point="doctype">
+    <doctype name="WEBUI-1142" extends="File">
+      <schema name="webui-1142"/>
+    </doctype>
+    <doctype name="Folder" append="true">
+      <subtypes>
+        <type>WEBUI-1142</type>
+      </subtypes>
+    </doctype>
+    <doctype name="Workspace" append="true">
+      <subtypes>
+        <type>WEBUI-1142</type>
+      </subtypes>
+    </doctype>
+  </extension>
+
+  <extension target="org.nuxeo.ecm.core.lifecycle.LifeCycleService" point="types">
+    <types>
+      <type name="WEBUI-1142">default</type>
+    </types>
+  </extension>
+
+  <extension target="org.nuxeo.ecm.core.schema.TypeService" point="schema">
+    <schema name="webui-1142" prefix="webui-1142" override="true" src="schemas/webui-1142.xsd"/>
+  </extension>
+
+</component>

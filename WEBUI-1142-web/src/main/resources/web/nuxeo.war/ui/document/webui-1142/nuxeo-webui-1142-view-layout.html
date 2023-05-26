@@ -1,0 +1,35 @@
+<!--
+`nuxeo-webui-1142-view-layout`
+@group Nuxeo UI
+@element nuxeo-webui-1142-view-layout
+-->
+<dom-module id="nuxeo-webui-1142-view-layout">
+  <template>
+    <style include="nuxeo-styles"></style>
+
+    <template is="dom-if" if="[[document.properties.webui-1142:pdf_bundle.data]]">
+      <nuxeo-document-preview document="[[document]]" xpath="webui-1142:pdf_bundle"></nuxeo-document-preview>
+      <nuxeo-document-blob document="[[document]]" xpath="webui-1142:pdf_bundle"></nuxeo-document-blob>
+    </template>
+    <nuxeo-document-attachments role="widget" document="[[document]]"></nuxeo-document-attachments>
+
+  </template>
+
+  <script>
+  Polymer({
+    is: 'nuxeo-webui-1142-view-layout',
+    behaviors: [Nuxeo.LayoutBehavior],
+    properties: {
+
+      /**
+         * @doctype WEBUI-1142
+         */
+      document: {
+        type: Object,
+      },
+
+    }
+  });
+  </script>
+</dom-module>
+

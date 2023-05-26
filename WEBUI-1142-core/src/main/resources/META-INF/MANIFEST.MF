@@ -1,0 +1,9 @@
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Manifest-Version: 1.0
+Bundle-Vendor: com.acme.core
+Bundle-Version: 1.0.0
+Bundle-Name: WEBUI-1142-core
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.acme.core.webui-1142-core;singleton=true
+Nuxeo-Component: OSGI-INF/doctype-contrib.xml

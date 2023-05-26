@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  nuxeo:
+    image: webui-1142:1.0.19
+    ports:
+      - "8080:8080"
+      - "8787:8787"
+    environment:
+      NUXEO_DEV: "true"
+    volumes:
+      - ./conf.d:/etc/nuxeo/conf.d
+      - data:/var/lib/nuxeo
+      - log:/var/log/nuxeo
+volumes:
+  data: {}
+  log: {}

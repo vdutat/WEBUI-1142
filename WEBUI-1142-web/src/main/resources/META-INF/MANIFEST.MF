@@ -1,0 +1,8 @@
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Manifest-Version: 1.0
+Bundle-Vendor: com.acme.ui
+Bundle-Version: 1.0.0
+Bundle-Name: WEBUI-1142-web
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.acme.ui.webui-1142-web;singleton=true
