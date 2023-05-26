@@ -15,8 +15,6 @@ LABEL com.customer.sample.build-tag=${BUILD_TAG}
 
 COPY --chown=nuxeo:0 target/WEBUI-1142-package-*.zip /home/nuxeo/local-packages/WEBUI-1142-package.zip
 COPY --chown=nuxeo:0 nuxeo-web-ui-3.0.19.zip /home/nuxeo/local-packages/nuxeo-web-ui-3.0.19.zip
-COPY --chown=nuxeo:0 nuxeo-web-ui-3.0.18.zip /home/nuxeo/local-packages/nuxeo-web-ui-3.0.18.zip
-COPY --chown=nuxeo:0 nuxeo-web-ui-3.0.22.zip /home/nuxeo/local-packages/nuxeo-web-ui-3.0.22.zip
 
 RUN /install-packages.sh --offline /home/nuxeo/local-packages/WEBUI-1142-package.zip
 RUN /install-packages.sh --offline /home/nuxeo/local-packages/nuxeo-web-ui-3.0.19.zip
